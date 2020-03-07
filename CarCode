@@ -1,0 +1,100 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Program {
+	
+	static boolean EndApp = false;
+	
+	  
+	  public static void main(String[] args) {
+		  ArrayList<Auto> cars = new ArrayList<>();
+		  cars.add(new Auto(2018, "Honda", "Accord", "Седан"));
+		  cars.add(new Auto(2019, "Toyota", "Camry", "Седан"));
+		  cars.add(new Auto(2012, "Opel", "Astra", "Хэтчбек"));
+		  Scanner in = new Scanner(System.in);
+		  Auto car = new Auto(0, " ", " ", " ");
+		  
+		   		  		
+		  while (!EndApp)
+		  {
+			  System.out.println("Выберите, что вы хотите сделать: 1 - просмотреть список автомобилей, 2 - редактировать информацию об автомобиле, 3 - добавить новый автомобиль, 4 - удалить автомобиль");
+			  switch (in.nextInt())
+			  {
+	              case 1: System.out.println(cars.toString()); break;
+			 
+	              case 2: 
+	            	  System.out.println("Введите индекс элемента для редактирования");
+	            	  int n = in.nextInt();
+	            	  cars.remove(n);
+	            	  System.out.print("Введите год ");
+					  car.year = in.nextInt();
+	            	  System.out.print("Введите марку автомобиля ");
+					  car.brand = in.next();
+					  System.out.print("Введите модель автомобиля ");
+					  car.model = in.next();	
+					  System.out.print("Введите тип кузова автомобиля ");
+					  car.typeofbody = in.next(); 
+					  
+					  cars.add(n, car);
+					  System.out.println(cars.toString());
+	            	  
+	            	  break;
+	              case 3: 
+	            	  System.out.print("Введите год ");
+					  car.year = in.nextInt();
+	            	  System.out.print("Введите марку автомобиля ");
+					  car.brand = in.next();
+					  System.out.print("Введите модель автомобиля ");
+					  car.model = in.next();	
+					  System.out.print("Введите тип кузова автомобиля ");
+					  car.typeofbody = in.next();
+					  cars.add(car);
+					  System.out.println(cars.toString());
+					  break;		  
+				  
+	              case 4: 
+	            	  System.out.println("Введите индекс элемента для удаления");
+		              int i = in.nextInt(); 
+		              cars.remove(i);
+		              break;
+	              default: break;
+              
+			  }
+			 
+			  System.out.println("Нажмите 0 для закрытия программы или 1 для продолжения работы: ");
+			  
+			  if (in.nextInt() == 0)
+                  EndApp = true;
+			  System.out.println("\n");
+			        
+	  }
+		  in.close();
+}
+	 
+}	        
+	    	  
+	  class Auto {
+		  public int year;
+		  public String brand;
+		  public String model;
+		  public String typeofbody;
+		  
+		  
+		  
+		  public Auto(int x, String y, String z, String a) {
+			  year = x;
+			  brand = y;
+			  model = z;
+			  typeofbody = a;
+		  }
+		  
+	
+		@Override
+		   public String toString() {
+		       return "Год выпуска:" + year + " " +"Производитель:" + brand + " " + "Модель:" + model + " " + "Тип кузова:" + typeofbody;
+		   }
+		
+	  }
+	
+
+
